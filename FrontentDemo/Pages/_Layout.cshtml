@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CNYFootballWeb.styles.css" asp-append-version="true" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+
+        <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F023BTLSBH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-F023BTLSBH');
+    </script>
+</head>
+<body>
+    @{
+        var imageHeight = "350px";
+        if (ViewBag.IsHomepage == true)
+        {
+            imageHeight = "600px";
+        }
+    }
+        <div style="width:100%;display:flex;justify-content:right;" class="TitleBarDark">
+            <div class="TitleBarLight" style="width:40%;padding-left:3%;min-width:375px;">
+                <img src="~/images/PhoneIcon.png" alt="Contact Phone" style="width:50px;height:50px;padding:5px 10px;display:inline-block;margin-top:-15px;margin-bottom:5px;" />
+                <span class="TitleBarText" style="display:inline-block;padding:5px;">
+                    Contact Us<br/>
+                    <a href="tel:+13154491200" class="TitleBarText">(315) 449-1200</a>
+                </span>
+                
+                <a class="SocialImage" href="https://www.facebook.com/CNYNFF/" target="_blank">
+                    <img src="~/images/FacebookIcon.png" alt="CNY Football Facebook" />
+                </a>
+                <a class="SocialImage" href="https://twitter.com/footballcny?lang=en" target="_blank">
+                    <img src="~/images/TwitterIcon.png" alt="CNY Football Twitter" />
+                </a>
+            </div>
+        </div>
+    <div style="width:100%;background-image:url('/images/FootballBG.jpg');background-position:top;background-size:cover;min-height:@imageHeight;overflow:hidden;" class="HeaderImage">
+        <div style="width:85%;margin:40px auto;padding:10px;display:flex;flex-wrap:wrap;" class="Logo ExpandMobile">
+            <div style="width:40%;min-width:300px;" class="ExpandMobile">
+                <img src="~/images/NFFLogo.png" alt="National Football Foundation" style="width:100%;max-width:90px;margin-top:-45px;" class="LogoImage" />
+                <div style="display:inline-block; padding:20px 10px;">
+                    <h3 class="LogoNational">National Football Foundation</h3>
+                    <h2 class="LogoChapter">Central New York Chapter</h2>
+                </div>
+            </div>
+            <div style="width:60%;min-width:300px;text-align:right;padding:20px 5px;" class="Menu">
+                <ul>
+                    @if (ViewBag.IsHomepage == true)
+                    {
+                        <li class="MenuItem MenuItemSelected">
+                            <a href="/">Home</a>
+                        </li>
+                   
+                        <li class="MenuItem">
+                            <a href="/Events">Events</a>
+                        </li>
+                    } else
+                    {
+                        <li class="MenuItem">
+                            <a href="/">Home</a>
+                        </li>
+
+                        <li class="MenuItem MenuItemSelected">
+                            <a href="/Events">Events</a>
+                        </li>
+                    }
+                    
+                    <li class="MenuItem">
+                        <a href="https://shop.cnyfootballfoundation.org/pages/donate" target="_blank">Donate</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        @if (ViewBag.IsHomepage == true)
+        {
+            <div style="width:100%;max-width:75%;margin:75px auto;">
+                <h3 class="HomeTitleSmall"><span style="display:inline-block;width:100px;border-top:3px solid #fa7601;height:8px;margin-right:30px;"></span>Football - Scholastics - Community Service</h3>
+                <h2 class="HomeTitleLarge">Building Leaders Through Football</h2>
+            </div>
+        }   
+    </div>
+
+    <div >
+            @RenderBody()
+        
+    </div>
+
+    <footer class="border-top text-muted" style="line-height:28px !important;font-size:16px;padding:10px;">
+        <div class="container" style="text-align:center;">
+            Copyright &copy; @DateTime.Now.Year Central New York Chapter of National Football Foundation and College Football Hall of Fame. All Rights Reserved<br />
+            <a href="https://www.functionone.com" style="color:#ababab;" target="_blank">Web Development by FunctionOne</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
